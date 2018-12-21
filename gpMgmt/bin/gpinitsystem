@@ -1303,6 +1303,7 @@ CREATE_QD_DB () {
 		if [ x"$GP_HOSTNAME" = x"__lookup_of_hostname_failed__" ]; then
 			ERROR_EXIT "[FATAL]:-Hostname lookup for host $GP_HOSTADDRESS failed." 2
 		fi
+		#此处 GP_HOSTNAME 的值可能会是 "$GPHOME" 的值会造成以下错误：gpadmin-[FATAL]:-Unknown host /opt/gpdb Script Exiting!
 		PING_HOST $GP_HOSTNAME
 		RETVAL=$?
 		if [ $RETVAL -ne 0 ]; then
